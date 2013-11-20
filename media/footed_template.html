@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<!-- saved from url=(0056)https://github.com/bradleyayers/django-tables2/issues/28 -->
+<html><head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# githubog: http://ogp.me/ns/fb/githubog#"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=10">
+        <title>Table footer · Issue #28 · bradleyayers/django-tables2</title>
+    <link rel="search" type="application/opensearchdescription+xml" href="https://github.com/opensearch.xml" title="GitHub">
+    <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
+    <link rel="apple-touch-icon" sizes="57x57" href="https://github.com/apple-touch-icon-114.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://github.com/apple-touch-icon-114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://github.com/apple-touch-icon-144.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://github.com/apple-touch-icon-144.png">
+    <link rel="logo" type="image/svg" href="https://github-media-downloads.s3.amazonaws.com/github-logo.svg">
+    <meta property="og:image" content="https://github.global.ssl.fastly.net/images/modules/logos_page/Octocat.png">
+    <meta name="hostname" content="github-fe130-cp1-prd.iad.github.net">
+    <meta name="ruby" content="ruby 1.9.3p194-tcs-github-tcmalloc (0e75de19f8) [x86_64-linux]">
+    <link rel="assets" href="https://github.global.ssl.fastly.net/">
+    <link rel="conduit-xhr" href="https://ghconduit.com:25035/">
+    <link rel="xhr-socket" href="https://github.com/_sockets">
+    
+
+
+    <meta name="msapplication-TileImage" content="/windows-tile.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="selected-link" value="repo_issues" data-pjax-transient="">
+    <meta content="collector.githubapp.com" name="octolytics-host"><meta content="collector-cdn.github.com" name="octolytics-script-host"><meta content="github" name="octolytics-app-id"><meta content="CDCB8216:1D7D:3BC24B6:528662B0" name="octolytics-dimension-request_id"><meta content="2072392" name="octolytics-actor-id"><meta content="pnichols104" name="octolytics-actor-login"><meta content="9b62488408fdb1cd685dad6839d9a69f999d173333a22e3ea19e470a716946d9" name="octolytics-actor-hash">
+    
+
+    
+    
+    <link rel="icon" type="image/x-icon" href="https://github.com/favicon.ico">
+
+    <meta content="authenticity_token" name="csrf-param">
+<meta content="KmSKOrP8zJvtXvkYY5brn8+vX1E6xvWpQzDwkHm5z1A=" name="csrf-token">
+
+    <link href="./footed_template_files/github-09acd31812af6ce17b5f432a7597c5849393330e.css" media="all" rel="stylesheet" type="text/css">
+    <link href="./footed_template_files/github2-6ebb4c15aad4c5e5c208b07641d286818cef647a.css" media="all" rel="stylesheet" type="text/css">
+    
+
+    
+
+      <script src="./footed_template_files/frameworks-bca527bb59d94c16d6bf2a759779d7953fa41e76.js" type="text/javascript"></script><style type="text/css"></style>
+      <script src="./footed_template_files/github-24f11604091c33b9686ff315cd7d46a5aa9712a7.js" type="text/javascript"></script><script type="text/javascript" async="" src="./footed_template_files/ga.js"></script>
+      
+      <meta http-equiv="x-pjax-version" content="d73cf633e128aec1e0702abcc0e1de33">
+
+        <meta property="og:title" content="django-tables2">
+  <meta property="og:type" content="githubog:gitrepository">
+  <meta property="og:url" content="https://github.com/bradleyayers/django-tables2">
+  <meta property="og:image" content="https://github.global.ssl.fastly.net/images/gravatars/gravatar-user-420.png">
+  <meta property="og:site_name" content="GitHub">
+  <meta property="og:description" content="It would be nice, if django-tables2 supports rendering an arbitrary number of rows  within &lt;tfoot&gt;&lt;/tfoot&gt;.">
+
+  <meta name="description" content="It would be nice, if django-tables2 supports rendering an arbitrary number of rows  within &lt;tfoot&gt;&lt;/tfoot&gt;.">
+
+  <meta content="105820" name="octolytics-dimension-user_id"><meta content="bradleyayers" name="octolytics-dimension-user_login"><meta content="1145581" name="octolytics-dimension-repository_id"><meta content="bradleyayers/django-tables2" name="octolytics-dimension-repository_nwo"><meta content="true" name="octolytics-dimension-repository_public"><meta content="false" name="octolytics-dimension-repository_is_fork"><meta content="1145581" name="octolytics-dimension-repository_network_root_id"><meta content="bradleyayers/django-tables2" name="octolytics-dimension-repository_network_root_nwo">
+  <link href="https://github.com/bradleyayers/django-tables2/commits/master.atom" rel="alternate" title="Recent Commits to django-tables2:master" type="application/atom+xml">
+
+  <script type="text/javascript" async="" src="./footed_template_files/api.js"></script></head>
+
+
+  <body class="logged_in  env-production macintosh vis-public" style="">
+    <div class="wrapper">
+      
+      
+      
+      
+
+
+      <div class="header header-logged-in true">
+  <div class="container clearfix">
+
+    <a class="header-logo-invertocat" href="https://github.com/">
+  <span class="mega-octicon octicon-mark-github"></span>
+</a>
+
+    
+    <a href="https://github.com/notifications" class="notification-indicator tooltipped downwards" data-gotokey="n" original-title="You have no unread notifications">
+        <span class="mail-status all-read"></span>
+</a>
+
+      <div class="command-bar js-command-bar  in-repository">
+          <form accept-charset="UTF-8" action="https://github.com/search" class="command-bar-form" id="top_search_form" method="get">
+
+<input type="text" data-hotkey="/ s" name="q" id="js-command-bar-field" placeholder="Search or type a command" tabindex="1" autocapitalize="off" data-username="pnichols104" data-repo="bradleyayers/django-tables2" data-branch="master" data-sha="58e94f674b562743679d8b03f0f8be1cab2faa43">
+
+    <input type="hidden" name="nwo" value="bradleyayers/django-tables2">
+
+    <div class="select-menu js-menu-container js-select-menu search-context-select-menu">
+      <span class="minibutton select-menu-button js-menu-target">
+        <span class="js-select-button">This repository</span>
+      </span>
+
+      <div class="select-menu-modal-holder js-menu-content js-navigation-container">
+        <div class="select-menu-modal">
+
+          <div class="select-menu-item js-navigation-item js-this-repository-navigation-item selected">
+            <span class="select-menu-item-icon octicon octicon-check"></span>
+            <input type="radio" class="js-search-this-repository" name="search_target" value="repository" checked="checked">
+            <div class="select-menu-item-text js-select-button-text">This repository</div>
+          </div> <!-- /.select-menu-item -->
+
+          <div class="select-menu-item js-navigation-item js-all-repositories-navigation-item">
+            <span class="select-menu-item-icon octicon octicon-check"></span>
+            <input type="radio" name="search_target" value="global">
+            <div class="select-menu-item-text js-select-button-text">All repositories</div>
+          </div> <!-- /.select-menu-item -->
+
+        </div>
+      </div>
+    </div>
+
+  <span class="octicon help tooltipped downwards" original-title="Show command bar help">
+    <span class="octicon octicon-question"></span>
+  </span>
+
+    <input type="hidden" name="type" value="Issues">
+
+  <input type="hidden" name="ref" value="cmdform">
+
+</form>
+        <ul class="top-nav">
+          <li class="explore"><a href="https://github.com/explore">Explore</a></li>
+            <li><a href="https://gist.github.com/">Gist</a></li>
+            <li><a href="https://github.com/blog">Blog</a></li>
+          <li><a href="https://help.github.com/">Help</a></li>
+        </ul>
+      </div>
+
+    
+
+
+  <ul id="user-links">
+    <li>
+      <a href="https://github.com/pnichols104" class="name">
+        <img height="20" src="./footed_template_files/fab6c089510bbc1d988d42b357aed0d6" width="20"> pnichols104
+      </a>
+    </li>
+
+      <li>
+        <a href="https://github.com/new" id="new_repo" class="tooltipped downwards" aria-label="Create a new repo" original-title="Create a new repo">
+          <span class="octicon octicon-repo-create"></span>
+        </a>
+      </li>
+
+      <li>
+        <a href="https://github.com/settings/profile" id="account_settings" class="tooltipped downwards" aria-label="Account settings " original-title="Account settings ">
+          <span class="octicon octicon-tools"></span>
+        </a>
+      </li>
+      <li>
+        <a class="tooltipped downwards" href="https://github.com/logout" data-method="post" id="logout" aria-label="Sign out" original-title="Sign out">
+          <span class="octicon octicon-log-out"></span>
+        </a>
+      </li>
+
+  </ul>
+
+<div class="js-new-dropdown-contents hidden">
+  
+
+<ul class="dropdown-menu">
+  <li>
+    <a href="https://github.com/new"><span class="octicon octicon-repo-create"></span> New repository</a>
+  </li>
+  <li>
+    <a href="https://github.com/organizations/new"><span class="octicon octicon-organization"></span> New organization</a>
+  </li>
+
+
+
+    <li class="section-title">
+      <span title="bradleyayers/django-tables2">This repository</span>
+    </li>
+      <li>
+        <a href="https://github.com/bradleyayers/django-tables2/issues/new"><span class="octicon octicon-issue-opened"></span> New issue</a>
+      </li>
+</ul>
+
+</div>
+
+
+    
+  </div>
+</div>
+
+      
+
+      
+
+
+
+
+          <div class="site" itemscope="" itemtype="http://schema.org/WebPage">
+    
+    <div class="pagehead repohead instapaper_ignore readability-menu">
+      <div class="container">
+        
+
+<ul class="pagehead-actions">
+
+    <li class="subscription">
+      <form accept-charset="UTF-8" action="https://github.com/notifications/subscribe" class="js-social-container" data-autosubmit="true" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="KmSKOrP8zJvtXvkYY5brn8+vX1E6xvWpQzDwkHm5z1A="></div>  <input id="repository_id" name="repository_id" type="hidden" value="1145581">
+
+    <div class="select-menu js-menu-container js-select-menu">
+      <a class="social-count js-social-count" href="https://github.com/bradleyayers/django-tables2/watchers">
+        28
+      </a>
+      <span class="minibutton select-menu-button with-count js-menu-target" role="button" tabindex="0">
+        <span class="js-select-button">
+          <span class="octicon octicon-eye-watch"></span>
+          Watch
+        </span>
+      </span>
+
+      <div class="select-menu-modal-holder">
+        <div class="select-menu-modal subscription-menu-modal js-menu-content">
+          <div class="select-menu-header">
+            <span class="select-menu-title">Notification status</span>
+            <span class="octicon octicon-remove-close js-menu-close"></span>
+          </div> <!-- /.select-menu-header -->
+
+          <div class="select-menu-list js-navigation-container" role="menu">
+
+            <div class="select-menu-item js-navigation-item selected" role="menuitem" tabindex="0">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <div class="select-menu-item-text">
+                <input checked="checked" id="do_included" name="do" type="radio" value="included">
+                <h4>Not watching</h4>
+                <span class="description">You only receive notifications for discussions in which you participate or are @mentioned.</span>
+                <span class="js-select-button-text hidden-select-button-text">
+                  <span class="octicon octicon-eye-watch"></span>
+                  Watch
+                </span>
+              </div>
+            </div> <!-- /.select-menu-item -->
+
+            <div class="select-menu-item js-navigation-item " role="menuitem" tabindex="0">
+              <span class="select-menu-item-icon octicon octicon octicon-check"></span>
+              <div class="select-menu-item-text">
+                <input id="do_subscribed" name="do" type="radio" value="subscribed">
+                <h4>Watching</h4>
+                <span class="description">You receive notifications for all discussions in this repository.</span>
+                <span class="js-select-button-text hidden-select-button-text">
+                  <span class="octicon octicon-eye-unwatch"></span>
+                  Unwatch
+                </span>
+              </div>
+            </div> <!-- /.select-menu-item -->
+
+            <div class="select-menu-item js-navigation-item " role="menuitem" tabindex="0">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <div class="select-menu-item-text">
+                <input id="do_ignore" name="do" type="radio" value="ignore">
+                <h4>Ignoring</h4>
+                <span class="description">You do not receive any notifications for discussions in this repository.</span>
+                <span class="js-select-button-text hidden-select-button-text">
+                  <span class="octicon octicon-mute"></span>
+                  Stop ignoring
+                </span>
+              </div>
+            </div> <!-- /.select-menu-item -->
+
+          </div> <!-- /.select-menu-list -->
+
+        </div> <!-- /.select-menu-modal -->
+      </div> <!-- /.select-menu-modal-holder -->
+    </div> <!-- /.select-menu -->
+
+</form>
+    </li>
+
+  <li>
+  
+
+  <div class="js-toggler-container js-social-container starring-container ">
+    <a href="https://github.com/bradleyayers/django-tables2/unstar" class="minibutton with-count js-toggler-target star-button starred upwards" title="Unstar this repository" data-remote="true" data-method="post" rel="nofollow">
+      <span class="octicon octicon-star-delete"></span><span class="text">Unstar</span>
+    </a>
+
+    <a href="https://github.com/bradleyayers/django-tables2/star" class="minibutton with-count js-toggler-target star-button unstarred upwards" title="Star this repository" data-remote="true" data-method="post" rel="nofollow">
+      <span class="octicon octicon-star"></span><span class="text">Star</span>
+    </a>
+
+      <a class="social-count js-social-count" href="https://github.com/bradleyayers/django-tables2/stargazers">
+        274
+      </a>
+  </div>
+
+  </li>
+
+
+        <li>
+          <a href="https://github.com/bradleyayers/django-tables2/fork" class="minibutton with-count js-toggler-target fork-button lighter upwards" title="Fork this repo" rel="nofollow" data-method="post">
+            <span class="octicon octicon-git-branch-create"></span><span class="text">Fork</span>
+          </a>
+          <a href="https://github.com/bradleyayers/django-tables2/network" class="social-count">101</a>
+        </li>
+
+
+</ul>
+
+        <h1 itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" class="entry-title public">
+          <span class="repo-label"><span>public</span></span>
+          <span class="mega-octicon octicon-repo"></span>
+          <span class="author">
+            <a href="https://github.com/bradleyayers" class="url fn" itemprop="url" rel="author"><span itemprop="title">bradleyayers</span></a>
+          </span>
+          <span class="repohead-name-divider">/</span>
+          <strong><a href="https://github.com/bradleyayers/django-tables2" class="js-current-repository js-repo-home-link">django-tables2</a></strong>
+
+          <span class="page-context-loader">
+            <img alt="Octocat-spinner-32" height="16" src="./footed_template_files/octocat-spinner-32.gif" width="16">
+          </span>
+
+        </h1>
+      </div><!-- /.container -->
+    </div><!-- /.repohead -->
+
+    <div class="container">
+
+      <div class="repository-with-sidebar repo-container">
+
+        <div class="repository-sidebar">
+            
+
+<div class="sunken-menu vertical-right repo-nav js-repo-nav js-repository-container-pjax js-octicon-loaders">
+  <div class="sunken-menu-contents">
+    <ul class="sunken-menu-group">
+      <li class="tooltipped leftwards" original-title="Code">
+        <a href="https://github.com/bradleyayers/django-tables2" aria-label="Code" class="js-selected-navigation-item sunken-menu-item" data-gotokey="c" data-pjax="true" data-selected-links="repo_source repo_downloads repo_commits repo_tags repo_branches /bradleyayers/django-tables2">
+          <span class="octicon octicon-code"></span> <span class="full-word">Code</span>
+          <img alt="Octocat-spinner-32" class="mini-loader" height="16" src="./footed_template_files/octocat-spinner-32.gif" width="16">
+</a>      </li>
+
+        <li class="tooltipped leftwards" original-title="Issues">
+          <a href="https://github.com/bradleyayers/django-tables2/issues" aria-label="Issues" class="selected js-selected-navigation-item sunken-menu-item js-disable-pjax" data-gotokey="i" data-selected-links="repo_issues /bradleyayers/django-tables2/issues">
+            <span class="octicon octicon-issue-opened"></span> <span class="full-word">Issues</span>
+            <span class="counter">49</span>
+            <img alt="Octocat-spinner-32" class="mini-loader" height="16" src="./footed_template_files/octocat-spinner-32.gif" width="16">
+</a>        </li>
+
+      <li class="tooltipped leftwards" original-title="Pull Requests"><a href="https://github.com/bradleyayers/django-tables2/pulls" aria-label="Pull Requests" class="js-selected-navigation-item sunken-menu-item js-disable-pjax" data-gotokey="p" data-selected-links="repo_pulls /bradleyayers/django-tables2/pulls">
+            <span class="octicon octicon-git-pull-request"></span> <span class="full-word">Pull Requests</span>
+            <span class="counter">11</span>
+            <img alt="Octocat-spinner-32" class="mini-loader" height="16" src="./footed_template_files/octocat-spinner-32.gif" width="16">
+</a>      </li>
+
+
+    </ul>
+    <div class="sunken-menu-separator"></div>
+    <ul class="sunken-menu-group">
+
+      <li class="tooltipped leftwards" original-title="Pulse">
+        <a href="https://github.com/bradleyayers/django-tables2/pulse" aria-label="Pulse" class="js-selected-navigation-item sunken-menu-item" data-pjax="true" data-selected-links="pulse /bradleyayers/django-tables2/pulse">
+          <span class="octicon octicon-pulse"></span> <span class="full-word">Pulse</span>
+          <img alt="Octocat-spinner-32" class="mini-loader" height="16" src="./footed_template_files/octocat-spinner-32.gif" width="16">
+</a>      </li>
+
+      <li class="tooltipped leftwards" original-title="Graphs">
+        <a href="https://github.com/bradleyayers/django-tables2/graphs" aria-label="Graphs" class="js-selected-navigation-item sunken-menu-item" data-pjax="true" data-selected-links="repo_graphs repo_contributors /bradleyayers/django-tables2/graphs">
+          <span class="octicon octicon-graph"></span> <span class="full-word">Graphs</span>
+          <img alt="Octocat-spinner-32" class="mini-loader" height="16" src="./footed_template_files/octocat-spinner-32.gif" width="16">
+</a>      </li>
+
+      <li class="tooltipped leftwards" original-title="Network">
+        <a href="https://github.com/bradleyayers/django-tables2/network" aria-label="Network" class="js-selected-navigation-item sunken-menu-item js-disable-pjax" data-selected-links="repo_network /bradleyayers/django-tables2/network">
+          <span class="octicon octicon-git-branch"></span> <span class="full-word">Network</span>
+          <img alt="Octocat-spinner-32" class="mini-loader" height="16" src="./footed_template_files/octocat-spinner-32.gif" width="16">
+</a>      </li>
+    </ul>
+
+
+  </div>
+</div>
+
+            <div class="only-with-full-nav">
+              
+
+  
+
+<div class="clone-url open" data-protocol-type="http" data-url="/users/set_protocol?protocol_selector=http&amp;protocol_type=clone">
+  <h3><strong>HTTPS</strong> clone URL</h3>
+  <div class="clone-url-box">
+    <input type="text" class="clone js-url-field" value="https://github.com/bradleyayers/django-tables2.git" readonly="readonly">
+
+    <span class="js-zeroclipboard url-box-clippy minibutton zeroclipboard-button" data-clipboard-text="https://github.com/bradleyayers/django-tables2.git" data-copied-hint="copied!" title="copy to clipboard"><span class="octicon octicon-clippy"></span></span>
+  </div>
+</div>
+
+  
+
+<div class="clone-url " data-protocol-type="ssh" data-url="/users/set_protocol?protocol_selector=ssh&amp;protocol_type=clone">
+  <h3><strong>SSH</strong> clone URL</h3>
+  <div class="clone-url-box">
+    <input type="text" class="clone js-url-field" value="git@github.com:bradleyayers/django-tables2.git" readonly="readonly">
+
+    <span class="js-zeroclipboard url-box-clippy minibutton zeroclipboard-button" data-clipboard-text="git@github.com:bradleyayers/django-tables2.git" data-copied-hint="copied!" title="copy to clipboard"><span class="octicon octicon-clippy"></span></span>
+  </div>
+</div>
+
+  
+
+<div class="clone-url " data-protocol-type="subversion" data-url="/users/set_protocol?protocol_selector=subversion&amp;protocol_type=clone">
+  <h3><strong>Subversion</strong> checkout URL</h3>
+  <div class="clone-url-box">
+    <input type="text" class="clone js-url-field" value="https://github.com/bradleyayers/django-tables2" readonly="readonly">
+
+    <span class="js-zeroclipboard url-box-clippy minibutton zeroclipboard-button" data-clipboard-text="https://github.com/bradleyayers/django-tables2" data-copied-hint="copied!" title="copy to clipboard"><span class="octicon octicon-clippy"></span></span>
+  </div>
+</div>
+
+
+<p class="clone-options">You can clone with
+      <a href="https://github.com/bradleyayers/django-tables2/issues/28#" class="js-clone-selector" data-protocol="http">HTTPS</a>,
+      <a href="https://github.com/bradleyayers/django-tables2/issues/28#" class="js-clone-selector" data-protocol="ssh">SSH</a>,
+      or <a href="https://github.com/bradleyayers/django-tables2/issues/28#" class="js-clone-selector" data-protocol="subversion">Subversion</a>.
+  <span class="octicon help tooltipped upwards" original-title="Get help on which URL is right for you.">
+    <a href="https://help.github.com/articles/which-remote-url-should-i-use">
+    <span class="octicon octicon-question"></span>
+    </a>
+  </span>
+</p>
+
+  <a href="github-mac://openRepo/https://github.com/bradleyayers/django-tables2" data-url="github-mac://openRepo/https://github.com/bradleyayers/django-tables2" class="minibutton sidebar-button js-conduit-rewrite-url">
+    <span class="octicon octicon-device-desktop"></span>
+    Clone in Desktop
+  </a>
+
+
+              <a href="https://github.com/bradleyayers/django-tables2/archive/master.zip" class="minibutton sidebar-button" title="Download this repository as a zip file" rel="nofollow">
+                <span class="octicon octicon-cloud-download"></span>
+                Download ZIP
+              </a>
+            </div>
+        </div><!-- /.repository-sidebar -->
+
+        <div id="js-repo-pjax-container" class="repository-content context-loader-container" data-pjax-container="">
+          
+<style type="text/css" media="screen">
+  
+</style>
+
+
+
+<div id="issues_next">
+    <div class="tabnav">
+      <div class="tabnav-right">
+        <div class="tabnav-widget ">
+          <a href="https://github.com/bradleyayers/django-tables2/issues/new" class="button minibutton primary bigger js-new-issue-button" data-hotkey="c">New Issue</a>
+        </div>
+      </div>
+
+      <ul class="tabnav-tabs">
+        <li><a href="https://github.com/bradleyayers/django-tables2/issues" class="tabnav-tab selected">Browse Issues</a></li>
+        <li><a href="https://github.com/bradleyayers/django-tables2/issues/milestones" class="tabnav-tab ">Milestones</a></li>
+      </ul>
+    </div>
+    <div id="show_issue" class="js-issues-results">
+
+      <div class="issue-head clearfix">
+        <span class="back">
+          <span class="octicon octicon-arrow-left"></span>
+          <a href="https://github.com/bradleyayers/django-tables2/issues" data-hotkey="u" id="to_isssues_list">Back to issue list</a>
+        </span>
+
+        <span class="number">
+          Issue <strong>#28</strong>
+        </span>
+      </div><!-- /.issue-head -->
+
+    <div id="discussion_bucket" class="tab-content">
+        <div class="discussion-sidebar">
+          
+<div id="js-discussion-stats" class="discussion-stats js-socket-channel js-updatable-content" data-channel="bradleyayers/django-tables2:issue:1591096" data-url="/bradleyayers/django-tables2/issues/28/show_partial?partial=discussion_stats">
+
+  <span class="state-indicator open">
+    Open
+  </span>
+
+  <p>
+    <strong>13</strong>
+    comments
+  </p>
+</div>
+
+
+<hr>
+
+<div class="discussion-labels">
+  <div class="label-manager">
+  <strong>Labels</strong>
+</div>
+
+<ul class="color-label-list filter-list small">
+  
+</ul>
+
+</div>
+
+        </div>
+
+      <div class="discussion-timeline js-quote-selection-container">
+
+        <div class="js-discussion">
+          
+
+<div class="discussion-bubble js-comment-container js-task-list-container">
+  <a href="https://github.com/kantntreiber"><img class="discussion-bubble-avatar" height="48" src="./footed_template_files/42450a697bb6820c3646340cd1ac6087" width="48"></a>
+
+  <div class="discussion-bubble-content bubble ">
+    <div class="discussion-bubble-inner">
+      <div class="js-comment comment discussion-topic starting-comment" id="issue-1591096" data-body-version="1a7a7418fbb1952ef964e495173644bb">
+
+        <div class="discussion-topic-header ">
+          <span class="discussion-topic-author"><a href="https://github.com/kantntreiber">kantntreiber</a> opened this issue <time class="js-relative-date" datetime="2011-09-07T09:46:45-07:00" title="2011-09-07 09:46:45">2 years ago</time></span>
+            <h2 class="discussion-topic-title js-comment-body-title">Table footer</h2>
+        </div> <!-- /.topic-comment-header -->
+
+        <div class="discusion-topic-infobar js-infobar js-form-issues">
+          <div class="milestone infobar-widget">
+  <span class="text js-milestone-infobar-item-wrapper">
+      No milestone
+
+  </span>
+
+</div>
+
+<div class="assignee infobar-widget">
+  <span class="css-truncate text js-assignee-infobar-item-wrapper">
+      No one is assigned
+  </span>
+
+</div>
+        </div> <!-- /.discusion-topic-infobar -->
+
+        <div class="comment-content">
+
+          <div class="edit-comment-hide">
+            <div class="js-comment-body comment-body markdown-body markdown-format">
+                <p>It would be nice, if django-tables2 supports rendering an arbitrary number of rows  within <code>&lt;tfoot&gt;&lt;/tfoot&gt;</code>.</p>
+            </div>
+          </div>
+
+          
+
+        </div> <!-- /.comment-content -->
+      </div> <!-- /.comment -->
+    </div> <!-- /.discussion-bubble-content -->
+  </div> <!-- /.discussion-bubble-inner -->
+</div> <!-- /.discussion-bubble -->
+
+
+          
+<div id="js-users-participants" class="js-socket-channel js-updatable-content" data-channel="bradleyayers/django-tables2:issue:1591096" data-url="/bradleyayers/django-tables2/issues/28/show_partial?partial=participants">
+
+  <div class="pull-participation">
+    <p class="quickstat"><a href="https://github.com/bradleyayers/django-tables2/issues/28#pr_contributors_box" rel="facebox"><strong>4</strong> participants</a></p>
+
+      <a class="avatar tooltipped downwards" href="https://github.com/kantntreiber" original-title="kantntreiber"><img height="24" src="./footed_template_files/42450a697bb6820c3646340cd1ac6087" width="24"></a>
+      <a class="avatar tooltipped downwards" href="https://github.com/bradleyayers" original-title="bradleyayers"><img height="24" src="./footed_template_files/9515ab087a2ca71270e6844366f6e689" width="24"></a>
+      <a class="avatar tooltipped downwards" href="https://github.com/blite" original-title="blite"><img height="24" src="./footed_template_files/824210c0b44859f7bf50ce8c6fb291c2" width="24"></a>
+      <a class="avatar tooltipped downwards" href="https://github.com/thebookworm101" original-title="thebookworm101"><img height="24" src="./footed_template_files/a6c0ea42edc1683ed4aa8f69a3238e4e" width="24"></a>
+  </div>
+
+  <div id="pr_contributors_box" style="display:none">
+    <h2 class="facebox-header">People participating in this issue</h2>
+    <ul class="facebox-user-list">
+      <li class="facebox-user-list-item">
+        <img height="24" src="./footed_template_files/42450a697bb6820c3646340cd1ac6087" width="24">
+        <a href="https://github.com/kantntreiber">kantntreiber</a>
+      </li>
+      <li class="facebox-user-list-item">
+        <img height="24" src="./footed_template_files/9515ab087a2ca71270e6844366f6e689" width="24">
+        <a href="https://github.com/bradleyayers">bradleyayers</a>
+      </li>
+      <li class="facebox-user-list-item">
+        <img height="24" src="./footed_template_files/824210c0b44859f7bf50ce8c6fb291c2" width="24">
+        <a href="https://github.com/blite">blite</a>
+      </li>
+      <li class="facebox-user-list-item">
+        <img height="24" src="./footed_template_files/a6c0ea42edc1683ed4aa8f69a3238e4e" width="24">
+        <a href="https://github.com/thebookworm101">thebookworm101</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+
+          
+
+  <div class="discussion-bubble js-comment-container">
+    <a href="https://github.com/bradleyayers"><img class="discussion-bubble-avatar" height="48" src="./footed_template_files/9515ab087a2ca71270e6844366f6e689" width="48"></a>
+    <div class="discussion-bubble-content bubble">
+      <div class="discussion-bubble-inner">
+        
+      <div id="issuecomment-2034276" class="js-comment comment  js-task-list-container" data-body-version="669af43332d1deef832eda8939f2e78f">
+        <div class="comment-header -comment-header">
+            <a href="https://github.com/bradleyayers/django-tables2/issues/28#issuecomment-2034276" class="comment-type-icon octicon octicon-comment" title=""></a>
+          <a href="https://github.com/bradleyayers" class="comment-header-author">bradleyayers</a>
+          <span class="comment-header-action-text">
+            <a href="https://github.com/bradleyayers/django-tables2/issues/28#issuecomment-2034276">
+            commented
+            </a>
+          </span>
+
+          <span class="comment-header-right">
+              <a href="https://github.com/bradleyayers/django-tables2/issues/28#issuecomment-2034276" class="comment-header-date"><time class="js-relative-date" datetime="2011-09-07T15:03:15-07:00" title="2011-09-07 15:03:15">2 years ago</time></a>
+          </span>
+        </div> <!-- /.comment-header -->
+
+        <div class="comment-content">
+
+          <div class="edit-comment-hide">
+            <div class="js-comment-body comment-body markdown-body markdown-format">
+                <p>What was your specific use-case? The first one that comes to mind for me, would be a totals row, however I think this would appear strange if the table was paginated. In the context of pagination, should the footer show data specific to the current data on the page, or specific to all data in the table?</p>
+
+<p>Just a few problems that come to mind, thoughts? Any ideas on an API for this?</p>
+            </div>
+          </div>
+        </div> <!-- /.comment-content -->
+      </div> <!-- /.comment -->
+
+      </div>
+    </div>
+  </div><!-- /.discussion-bubble -->
+  <div class="discussion-bubble js-comment-container">
+    <a href="https://github.com/bradleyayers"><img class="discussion-bubble-avatar" height="48" src="./footed_template_files/9515ab087a2ca71270e6844366f6e689" width="48"></a>
+    <div class="discussion-bubble-content bubble">
+      <div class="discussion-bubble-inner">
+        
+      <div id="issuecomment-2662275" class="js-comment comment  js-task-list-container" data-body-version="05ea84fe1a6d4c36914121202e526d0d">
+        <div class="comment-header -comment-header">
+            <a href="https://github.com/bradleyayers/django-tables2/issues/28#issuecomment-2662275" class="comment-type-icon octicon octicon-comment" title=""></a>
+          <a href="https://github.com/bradleyayers" class="comment-header-author">bradleyayers</a>
+          <span class="comment-header-action-text">
+            <a href="https://github.com/bradleyayers/django-tables2/issues/28#issuecomment-2662275">
+            commented
+            </a>
+          </span>
+
+          <span class="comment-header-right">
+              <a href="https://github.com/bradleyayers/django-tables2/issues/28#issuecomment-2662275" class="comment-header-date"><time class="js-relative-date" datetime="2011-11-07T16:41:22-08:00" title="2011-11-07 16:41:22">2 years ago</time></a>
+          </span>
+        </div> <!-- /.comment-header -->
+
+        <div class="comment-content">
+
+          <div class="edit-comment-hide">
+            <div class="js-comment-body comment-body markdown-body markdown-format">
+                <p>This can be achieved now in v0.8.0 by writing a custom template:</p>
+
+<pre><code>{% extends "django_tables2/table.html" %}
+
+{% block table.tfoot %}
+&lt;tfoot&gt;
+    &lt;tr&gt;
+        &lt;td colspan="3"&gt;three column spanning footer&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/tfoot&gt;    
+{% endblock %}
+</code></pre>
+
+<p>It can be hooked up to the table via:</p>
+
+<pre><code>class FootedTable(tables.Table):
+    # ... columns
+
+    class Meta:
+        template = "path/to/footed_template.html"
+</code></pre>
+            </div>
+          </div>
+        </div> <!-- /.comment-content -->
+      </div> <!-- /.comment -->
+
+      </div>
+    </div>
+  </div><!-- /.discussion-bubble -->
+  
+
+
+  <div class="action-bubble action-bubble-closed">
+    <span class="action">
+      <span class="state-indicator closed">Closed</span>
+    </span>
+    <div class="bubble">
+        <p>
+          <strong><span class="avatar"><img height="24" src="./footed_template_files/9515ab087a2ca71270e6844366f6e689" width="24"></span>
+            <a href="https://github.com/bradleyayers">bradleyayers</a></strong>
+          closed the issue
+          
+          <time class="js-relative-date" datetime="2012-03-07T21:24:18-08:00" title="2012-03-07 21:24:18">2 years ago</time>
+        </p>
+    </div><!-- /.bubble -->
+  </div><!-- /.action-bubble -->
+
+    <div class="closed-banner"></div>
+
+  <div class="discussion-bubble js-comment-container">
+    <a href="https://github.com/blite"><img class="discussion-bubble-avatar" height="48" src="./footed_template_files/824210c0b44859f7bf50ce8c6fb291c2" width="48"></a>
+    <div class="discussion-bubble-content bubble">
+      <div class="discussion-bubble-inner">
+        
+      <div id="issuecomment-5165530" class="js-comment comment  js-task-list-container" data-body-version="df8b66849f5caa731198241206d86ff6">
+        <div class="comment-header -comment-header">
+            <a href="https://github.com/bradleyayers/django-tables2/issues/28#issuecomment-5165530" class="comment-type-icon octicon octicon-comment" title=""></a>
+          <a href="https://github.com/blite" class="comment-header-author">blite</a>
+          <span class="comment-header-action-text">
+            <a href="https://github.com/bradleyayers/django-tables2/issues/28#issuecomment-5165530">
+            commented
+            </a>
+          </span>
+
+          <span class="comment-header-right">
+              <a href="https://github.com/bradleyayers/django-tables2/issues/28#issuecomment-5165530" class="comment-header-date"><time class="js-relative-date" datetime="2012-04-16T17:06:52-07:00" title="2012-04-16 17:06:52">2 years ago</time></a>
+          </span>
+        </div> <!-- /.comment-header -->
+
+        <div class="comment-content">
+
+          <div class="edit-comment-hide">
+            <div class="js-comment-body comment-body markdown-body markdown-format">
+                <p>I think this is still needed, but as a special type of row that totals up the whole dataset</p>
+            </div>
+          </div>
+        </div> <!-- /.comment-content -->
+      </div> <!-- /.comment -->
+
+      </div>
+    </div>
+  </div><!-- /.discussion-bubble -->
+  
+
+
+  <div class="action-bubble action-bubble-reopened">
+    <span class="action">
+      <span class="state-indicator reopened">Reopened</span>
+    </span>
+    <div class="bubble">
+        <p>
+          <strong><span class="avatar"><img height="24" src="./footed_template_files/9515ab087a2ca71270e6844366f6e689" width="24"></span>
+            <a href="https://github.com/bradleyayers">bradleyayers</a></strong>
+          reopened the issue
+          <time class="js-relative-date" datetime="2012-04-16T17:33:00-07:00" title="2012-04-16 17:33:00">2 years ago</time>
+        </p>
+    </div><!-- /.bubble -->
+  </div><!-- /.action-bubble -->
+
+
+  <div class="discussion-bubble js-comment-container">
+    <a href="https://github.com/bradleyayers"><img class="discussion-bubble-avatar" height="48" src="./footed_template_files/9515ab087a2ca71270e6844366f6e689" width="48"></a>
+    <div class="discussion-bubble-content bubble">
+      <div class="discussion-bubble-inner">
+        
+      <div id="issuecomment-5165902" class="js-comment comment  js-task-list-container" data-body-version="5f29f972065b57c95b847a3eef1674cb">
+        <div class="comment-header -comment-header">
+            <a href="https://github.com/bradleyayers/django-tables2/issues/28#issuecomment-5165902" class="comment-type-icon octicon octicon-comment" title=""></a>
+          <a href="https://github.com/bradleyayers" class="comment-header-author">bradleyayers</a>
+          <span class="comment-header-action-text">
+            <a href="https://github.com/bradleyayers/django-tables2/issues/28#issuecomment-5165902">
+            commented
+            </a>
+          </span>
+
+          <span class="comment-header-right">
+              <a href="https://github.com/bradleyayers/django-tables2/issues/28#issuecomment-5165902" class="comment-header-date"><time class="js-relative-date" datetime="2012-04-16T17:33:21-07:00" title="2012-04-16 17:33:21">2 years ago</time></a>
+          </span>
+        </div> <!-- /.comment-header -->
+
+        <div class="comment-content">
+
+          <div class="edit-comment-hide">
+            <div class="js-comment-body comment-body markdown-body markdown-format">
+                <p>Could you propose an API for this</p>
+            </div>
+          </div>
+        </div> <!-- /.comment-content -->
+      </div> <!-- /.comment -->
+
+      </div>
+    </div>
+  </div><!-- /.discussion-bubble -->
+  <div class="discussion-bubble js-comment-container">
+    <a href="https://github.com/blite"><img class="discussion-bubble-avatar" height="48" src="./footed_template_files/824210c0b44859f7bf50ce8c6fb291c2" width="48"></a>
+    <div class="discussion-bubble-content bubble">
+      <div class="discussion-bubble-inner">
+        
+      <div id="issuecomment-5168279" class="js-comment comment  js-task-list-container" data-body-version="b567cb83bd7b80a67d3d98668da385ef">
+        <div class="comment-header -comment-header">
+            <a href="https://github.com/bradleyayers/django-tables2/issues/28#issuecomment-5168279" class="comment-type-icon octicon octicon-comment" title=""></a>
+          <a href="https://github.com/blite" class="comment-header-author">blite</a>
+          <span class="comment-header-action-text">
+            <a href="https://github.com/bradleyayers/django-tables2/issues/28#issuecomment-5168279">
+            commented
+            </a>
+          </span>
+
+          <span class="comment-header-right">
+              <a href="https://github.com/bradleyayers/django-tables2/issues/28#issuecomment-5168279" class="comment-header-date"><time class="js-relative-date" datetime="2012-04-16T21:47:20-07:00" title="2012-04-16 21:47:20">2 years ago</time></a>
+          </span>
+        </div> <!-- /.comment-header -->
+
+        <div class="comment-content">
+
+          <div class="edit-comment-hide">
+            <div class="js-comment-body comment-body markdown-body markdown-format">
+                <p>just a quick look over this it seems like you'd need different column types to be able to automatically calculate it.  You could however quite easily insert a hook into the __iter__ method of BoundRows to return a total if a certain function existed</p>
+
+<pre><code>def render_total(self, columns):
+    #columns is a dict of all the columns with initial value set to None
+    #render None as N/A
+    return columns   
+</code></pre>
+            </div>
+          </div>
+        </div> <!-- /.comment-content -->
+      </div> <!-- /.comment -->
+
+      </div>
+    </div>
+  </div><!-- /.discussion-bubble -->
+  <div class="discussion-bubble js-comment-container">
+    <a href="https://github.com/bradleyayers"><img class="discussion-bubble-avatar" height="48" src="./footed_template_files/9515ab087a2ca71270e6844366f6e689" width="48"></a>
+    <div class="discussion-bubble-content bubble">
+      <div class="discussion-bubble-inner">
+        
+      <div id="issuecomment-5168367" class="js-comment comment  js-task-list-container" data-body-version="50ad3d6a8938cbbac55ef3dcf396597e">
+        <div class="comment-header -comment-header">
+            <a href="https://github.com/bradleyayers/django-tables2/issues/28#issuecomment-5168367" class="comment-type-icon octicon octicon-comment" title=""></a>
+          <a href="https://github.com/bradleyayers" class="comment-header-author">bradleyayers</a>
+          <span class="comment-header-action-text">
+            <a href="https://github.com/bradleyayers/django-tables2/issues/28#issuecomment-5168367">
+            commented
+            </a>
+          </span>
+
+          <span class="comment-header-right">
+              <a href="https://github.com/bradleyayers/django-tables2/issues/28#issuecomment-5168367" class="comment-header-date"><time class="js-relative-date" datetime="2012-04-16T21:59:43-07:00" title="2012-04-16 21:59:43">2 years ago</time></a>
+          </span>
+        </div> <!-- /.comment-header -->
+
+        <div class="comment-content">
+
+          <div class="edit-comment-hide">
+            <div class="js-comment-body comment-body markdown-body markdown-format">
+                <p>Perhaps a <code>render_footer</code> method on <code>Column</code> that would return HTML for a footer cell, and allow subclasses to extend it. However this raises a few questions:</p>
+
+<ul>
+<li>How does <code>render_footer</code> access data to use to calculate an output value.</li>
+<li>In the context of pagination, should the footer be for the current page, or all pages.</li>
+<li>Should (and if so how) multiple footer rows be supported.</li>
+</ul>
+            </div>
+          </div>
+        </div> <!-- /.comment-content -->
+      </div> <!-- /.comment -->
+
+      </div>
+    </div>
+  </div><!-- /.discussion-bubble -->
+  <div class="discussion-bubble js-comment-container">
+    <a href="https://github.com/blite"><img class="discussion-bubble-avatar" height="48" src="./footed_template_files/824210c0b44859f7bf50ce8c6fb291c2" width="48"></a>
+    <div class="discussion-bubble-content bubble">
+      <div class="discussion-bubble-inner">
+        
+      <div id="issuecomment-5168462" class="js-comment comment  js-task-list-container" data-body-version="6d7dbb674b81b06b550d91f4fe1ede2a">
+        <div class="comment-header -comment-header">
+            <a href="https://github.com/bradleyayers/django-tables2/issues/28#issuecomment-5168462" class="comment-type-icon octicon octicon-comment" title=""></a>
+          <a href="https://github.com/blite" class="comment-header-author">blite</a>
+          <span class="comment-header-action-text">
+            <a href="https://github.com/bradleyayers/django-tables2/issues/28#issuecomment-5168462">
+            commented
+            </a>
+          </span>
+
+          <span class="comment-header-right">
+              <a href="https://github.com/bradleyayers/django-tables2/issues/28#issuecomment-5168462" class="comment-header-date"><time class="js-relative-date" datetime="2012-04-16T22:12:06-07:00" title="2012-04-16 22:12:06">2 years ago</time></a>
+          </span>
+        </div> <!-- /.comment-header -->
+
+        <div class="comment-content">
+
+          <div class="edit-comment-hide">
+            <div class="js-comment-body comment-body markdown-body markdown-format">
+                <p>that's definitely better because you could re-use some of the logic to actually render the values.  I don't think multiple footer rows would be that common, but if you wanted to build it in a way to support them you could just consider the footer to be similar to rows.  I don't personally use the pagination, but I think it would be more intuitive to total the rows currently displayed. </p>
+
+<pre><code>{% block table.tfoot %}
+&lt;tfoot&gt;
+
+    {% for row in table.footer %}
+      &lt;tr&gt;  
+      {% for column, cell in row.items %}
+          &lt;th&gt;{{ cell }}&lt;/th&gt;
+      {% endfor %}
+      &lt;/tr&gt;    
+    {% endfor %}
+
+&lt;/tfoot&gt;    
+{% endblock %}  
+</code></pre>
+            </div>
+          </div>
+        </div> <!-- /.comment-content -->
+      </div> <!-- /.comment -->
+
+      </div>
+    </div>
+  </div><!-- /.discussion-bubble -->
+  <div class="discussion-bubble js-comment-container">
+    <a href="https://github.com/blite"><img class="discussion-bubble-avatar" height="48" src="./footed_template_files/824210c0b44859f7bf50ce8c6fb291c2" width="48"></a>
+    <div class="discussion-bubble-content bubble">
+      <div class="discussion-bubble-inner">
+        
+      <div id="issuecomment-5168762" class="js-comment comment  js-task-list-container" data-body-version="acbe8b02cc6319bf1ff760b148c04326">
+        <div class="comment-header -comment-header">
+            <a href="https://github.com/bradleyayers/django-tables2/issues/28#issuecomment-5168762" class="comment-type-icon octicon octicon-comment" title=""></a>
+          <a href="https://github.com/blite" class="comment-header-author">blite</a>
+          <span class="comment-header-action-text">
+            <a href="https://github.com/bradleyayers/django-tables2/issues/28#issuecomment-5168762">
+            commented
+            </a>
+          </span>
+
+          <span class="comment-header-right">
+              <a href="https://github.com/bradleyayers/django-tables2/issues/28#issuecomment-5168762" class="comment-header-date"><time class="js-relative-date" datetime="2012-04-16T22:50:54-07:00" title="2012-04-16 22:50:54">2 years ago</time></a>
+          </span>
+        </div> <!-- /.comment-header -->
+
+        <div class="comment-content">
+
+          <div class="edit-comment-hide">
+            <div class="js-comment-body comment-body markdown-body markdown-format">
+                <p>for now I ended up doing the above plus this:</p>
+
+<div class="highlight highlight-python"><pre>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">form</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">rf_values</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">get_values</span><span class="p">()</span>
+        <span class="n">rf_annotations</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">get_annotations</span><span class="p">()</span>
+        <span class="n">rf_filter</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">get_filter</span><span class="p">()</span>
+        <span class="n">rf_calculations</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">get_calculations</span><span class="p">()</span>                  
+        <span class="n">data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">HourlyStat</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="o">**</span><span class="n">rf_filter</span>
+                    <span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="o">*</span><span class="n">rf_values</span>
+                    <span class="p">)</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="o">**</span><span class="n">rf_annotations</span><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s">'-clicks'</span><span class="p">))</span> 
+        <span class="nb">super</span><span class="p">(</span><span class="n">StatsTable</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>      
+        <span class="n">columns</span> <span class="o">=</span> <span class="n">rf_values</span> <span class="o">+</span> <span class="n">rf_annotations</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="o">+</span> <span class="n">rf_calculations</span>
+        <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">columns</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">base_columns</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">tables</span><span class="o">.</span><span class="n">Column</span><span class="p">()</span>
+        <span class="n">f_data</span> <span class="o">=</span> <span class="nb">dict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="n">columns</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">f_data</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">rf_annotations</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="n">f_data</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">footer_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">TableDataClass</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="n">f_data</span><span class="p">],</span> <span class="n">table</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">footer</span> <span class="o">=</span> <span class="n">BoundRows</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">footer_data</span><span class="p">)</span>    
+</pre></div>
+            </div>
+          </div>
+        </div> <!-- /.comment-content -->
+      </div> <!-- /.comment -->
+
+      </div>
+    </div>
+  </div><!-- /.discussion-bubble -->
+  <div class="discussion-bubble js-comment-container">
+    <a href="https://github.com/thebookworm101"><img class="discussion-bubble-avatar" height="48" src="./footed_template_files/a6c0ea42edc1683ed4aa8f69a3238e4e" width="48"></a>
+    <div class="discussion-bubble-content bubble">
+      <div class="discussion-bubble-inner">
+        
+      <div id="issuecomment-12487919" class="js-comment comment  js-task-list-container" data-body-version="d5b17cda0829d4ddea1dd5ffa0b3746f">
+        <div class="comment-header -comment-header">
+            <a href="https://github.com/bradleyayers/django-tables2/issues/28#issuecomment-12487919" class="comment-type-icon octicon octicon-comment" title=""></a>
+          <a href="https://github.com/thebookworm101" class="comment-header-author">thebookworm101</a>
+          <span class="comment-header-action-text">
+            <a href="https://github.com/bradleyayers/django-tables2/issues/28#issuecomment-12487919">
+            commented
+            </a>
+          </span>
+
+          <span class="comment-header-right">
+              <a href="https://github.com/bradleyayers/django-tables2/issues/28#issuecomment-12487919" class="comment-header-date"><time class="js-relative-date" datetime="2013-01-21T00:10:22-08:00" title="2013-01-21 00:10:22">10 months ago</time></a>
+          </span>
+        </div> <!-- /.comment-header -->
+
+        <div class="comment-content">
+
+          <div class="edit-comment-hide">
+            <div class="js-comment-body comment-body markdown-body markdown-format">
+                <p>I'm in need of a way to create a totals <del> column</del> row in <del>m</del> my table, is there a way to do that yet?  im unable to follow the code snippets by blite above </p>
+            </div>
+          </div>
+        </div> <!-- /.comment-content -->
+      </div> <!-- /.comment -->
+
+      </div>
+    </div>
+  </div><!-- /.discussion-bubble -->
+  <div class="discussion-bubble js-comment-container">
+    <a href="https://github.com/bradleyayers"><img class="discussion-bubble-avatar" height="48" src="./footed_template_files/9515ab087a2ca71270e6844366f6e689" width="48"></a>
+    <div class="discussion-bubble-content bubble">
+      <div class="discussion-bubble-inner">
+        
+      <div id="issuecomment-12488615" class="js-comment comment  js-task-list-container" data-body-version="2eb0687dd81e50f5c92dd72e7f2bd5cb">
+        <div class="comment-header -comment-header">
+            <a href="https://github.com/bradleyayers/django-tables2/issues/28#issuecomment-12488615" class="comment-type-icon octicon octicon-comment" title=""></a>
+          <a href="https://github.com/bradleyayers" class="comment-header-author">bradleyayers</a>
+          <span class="comment-header-action-text">
+            <a href="https://github.com/bradleyayers/django-tables2/issues/28#issuecomment-12488615">
+            commented
+            </a>
+          </span>
+
+          <span class="comment-header-right">
+              <a href="https://github.com/bradleyayers/django-tables2/issues/28#issuecomment-12488615" class="comment-header-date"><time class="js-relative-date" datetime="2013-01-21T00:36:39-08:00" title="2013-01-21 00:36:39">10 months ago</time></a>
+          </span>
+        </div> <!-- /.comment-header -->
+
+        <div class="comment-content">
+
+          <div class="edit-comment-hide">
+            <div class="js-comment-body comment-body markdown-body markdown-format">
+                <p>I assume you mean a totals row, and if so, what should its behavior be in regards to pagination?</p>
+            </div>
+          </div>
+        </div> <!-- /.comment-content -->
+      </div> <!-- /.comment -->
+
+      </div>
+    </div>
+  </div><!-- /.discussion-bubble -->
+  <div class="discussion-bubble js-comment-container">
+    <a href="https://github.com/thebookworm101"><img class="discussion-bubble-avatar" height="48" src="./footed_template_files/a6c0ea42edc1683ed4aa8f69a3238e4e" width="48"></a>
+    <div class="discussion-bubble-content bubble">
+      <div class="discussion-bubble-inner">
+        
+      <div id="issuecomment-12488966" class="js-comment comment  js-task-list-container" data-body-version="0bf14d5896b930151c64fd4cb02f1f15">
+        <div class="comment-header -comment-header">
+            <a href="https://github.com/bradleyayers/django-tables2/issues/28#issuecomment-12488966" class="comment-type-icon octicon octicon-comment" title=""></a>
+          <a href="https://github.com/thebookworm101" class="comment-header-author">thebookworm101</a>
+          <span class="comment-header-action-text">
+            <a href="https://github.com/bradleyayers/django-tables2/issues/28#issuecomment-12488966">
+            commented
+            </a>
+          </span>
+
+          <span class="comment-header-right">
+              <a href="https://github.com/bradleyayers/django-tables2/issues/28#issuecomment-12488966" class="comment-header-date"><time class="js-relative-date" datetime="2013-01-21T00:51:31-08:00" title="2013-01-21 00:51:31">10 months ago</time></a>
+          </span>
+        </div> <!-- /.comment-header -->
+
+        <div class="comment-content">
+
+          <div class="edit-comment-hide">
+            <div class="js-comment-body comment-body markdown-body markdown-format">
+                <p>um, yes that's what meant to say, thanks for the correction,  about pagination im thinking the totals should occur at the very end of the table (im not expecting anything else to make sense for my use-case since its a time delta column with float values) , or but since i have different tables, i could have them  on a per table basis, something like that. <br>
+EDIT:<br>
+Is there a way of accessing the column data so i can add it up or is there already a way of doing that?</p>
+            </div>
+          </div>
+        </div> <!-- /.comment-content -->
+      </div> <!-- /.comment -->
+
+      </div>
+    </div>
+  </div><!-- /.discussion-bubble -->
+  <div class="discussion-bubble js-comment-container">
+    <a href="https://github.com/bradleyayers"><img class="discussion-bubble-avatar" height="48" src="./footed_template_files/9515ab087a2ca71270e6844366f6e689" width="48"></a>
+    <div class="discussion-bubble-content bubble">
+      <div class="discussion-bubble-inner">
+        
+      <div id="issuecomment-12497455" class="js-comment comment  js-task-list-container" data-body-version="8a1b83323304a38092559ba0cff07c0b">
+        <div class="comment-header -comment-header">
+            <a href="https://github.com/bradleyayers/django-tables2/issues/28#issuecomment-12497455" class="comment-type-icon octicon octicon-comment" title=""></a>
+          <a href="https://github.com/bradleyayers" class="comment-header-author">bradleyayers</a>
+          <span class="comment-header-action-text">
+            <a href="https://github.com/bradleyayers/django-tables2/issues/28#issuecomment-12497455">
+            commented
+            </a>
+          </span>
+
+          <span class="comment-header-right">
+              <a href="https://github.com/bradleyayers/django-tables2/issues/28#issuecomment-12497455" class="comment-header-date"><time class="js-relative-date" datetime="2013-01-21T05:20:26-08:00" title="2013-01-21 05:20:26">10 months ago</time></a>
+          </span>
+        </div> <!-- /.comment-header -->
+
+        <div class="comment-content">
+
+          <div class="edit-comment-hide">
+            <div class="js-comment-body comment-body markdown-body markdown-format">
+                <p>So you mean you'd only see the totals row on the last page?</p>
+            </div>
+          </div>
+        </div> <!-- /.comment-content -->
+      </div> <!-- /.comment -->
+
+      </div>
+    </div>
+  </div><!-- /.discussion-bubble -->
+  <div class="discussion-bubble js-comment-container">
+    <a href="https://github.com/thebookworm101"><img class="discussion-bubble-avatar" height="48" src="./footed_template_files/a6c0ea42edc1683ed4aa8f69a3238e4e" width="48"></a>
+    <div class="discussion-bubble-content bubble">
+      <div class="discussion-bubble-inner">
+        
+      <div id="issuecomment-12506743" class="js-comment comment  js-task-list-container" data-body-version="093fd33f3e9894a208a83c3c6025f114">
+        <div class="comment-header -comment-header">
+            <a href="https://github.com/bradleyayers/django-tables2/issues/28#issuecomment-12506743" class="comment-type-icon octicon octicon-comment" title=""></a>
+          <a href="https://github.com/thebookworm101" class="comment-header-author">thebookworm101</a>
+          <span class="comment-header-action-text">
+            <a href="https://github.com/bradleyayers/django-tables2/issues/28#issuecomment-12506743">
+            commented
+            </a>
+          </span>
+
+          <span class="comment-header-right">
+              <a href="https://github.com/bradleyayers/django-tables2/issues/28#issuecomment-12506743" class="comment-header-date"><time class="js-relative-date" datetime="2013-01-21T08:59:57-08:00" title="2013-01-21 08:59:57">10 months ago</time></a>
+          </span>
+        </div> <!-- /.comment-header -->
+
+        <div class="comment-content">
+
+          <div class="edit-comment-hide">
+            <div class="js-comment-body comment-body markdown-body markdown-format">
+                <p>yes, only on the last page</p>
+            </div>
+          </div>
+        </div> <!-- /.comment-content -->
+      </div> <!-- /.comment -->
+
+      </div>
+    </div>
+  </div><!-- /.discussion-bubble -->
+
+
+
+<!-- Rendered timeline since 2013-01-21 08:59:57 -->
+<div id="js-discussion-marker" class="js-socket-channel js-updatable-content" data-channel="bradleyayers/django-tables2:issue:1591096" data-url="/bradleyayers/django-tables2/issues/28/show_partial?partial=discussion_marker&amp;since=1358787597" data-last-modified="Mon, 21 Jan 2013 16:59:57 GMT">
+</div>
+
+
+
+        </div>
+
+          
+
+<div class="discussion-bubble js-comment-container ">
+  <a href="https://github.com/pnichols104"><img class="discussion-bubble-avatar" height="48" src="./footed_template_files/fab6c089510bbc1d988d42b357aed0d6" width="48"></a>
+
+  <form accept-charset="UTF-8" action="https://github.com/bradleyayers/django-tables2/issue_comments" class="js-new-comment-form" data-remote="true" data-type="json" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="KmSKOrP8zJvtXvkYY5brn8+vX1E6xvWpQzDwkHm5z1A="></div>
+  
+  <div class="discussion-bubble-content bubble">
+    <div class="discussion-bubble-inner">
+      <input type="hidden" name="issue" value="28">
+      
+
+
+<div class="js-previewable-comment-form previewable-comment-form write-selected" data-preview-url="/preview?repository=1145581">
+  <div class="comment-form-head tabnav">
+    <ul class="tabnav-tabs">
+      <li><a href="https://github.com/bradleyayers/django-tables2/issues/28#write_bucket_1" class="tabnav-tab write-tab js-write-tab selected">Write</a></li>
+      <li><a href="https://github.com/bradleyayers/django-tables2/issues/28#preview_bucket_1" class="tabnav-tab preview-tab js-preview-tab">Preview</a></li>
+    </ul>
+    <span class="tabnav-right">
+      <span class="tabnav-widget text">Comments are parsed with <a href="https://help.github.com/articles/github-flavored-markdown" class="gfm-help" target="_blank">GitHub Flavored Markdown</a></span>
+    </span>
+  </div>
+
+<div class="comment-form-error js-comment-form-error" style="display:none">    There was an error creating your Issue: 
+</div>
+  <div id="write_bucket_1" class="write-content js-write-bucket js-uploadable-container upload-enabled is-default" data-model="assets">
+    
+<a href="https://github.com/bradleyayers/django-tables2/issues/28#fullscreen_comment_body_1" class="enable-fullscreen js-enable-fullscreen tooltipped
+  leftwards " original-title="Zen Mode">
+  <span class="octicon octicon-screen-full"></span>
+</a>
+
+    <textarea name="comment[body]" tabindex="1" id="comment_body_1" placeholder="Leave a comment" class="js-comment-field js-size-to-fit js-quote-selection-target  input-with-fullscreen-icon" data-suggester="1_new_preview_suggester"></textarea>
+
+    
+  <p class="drag-and-drop">
+    <span class="default">
+        Attach images by dragging &amp; dropping,
+        <input type="file" multiple="multiple" class="manual-file-chooser js-manual-file-chooser">
+        <a class="manual-file-chooser-text" href="https://github.com/bradleyayers/django-tables2/issues/28#">selecting them</a>, or pasting
+        from the clipboard.
+    </span>
+    <span class="loading">
+      <img alt="Octocat-spinner-32" height="16" src="./footed_template_files/octocat-spinner-32.gif" width="16"> Uploading your images…
+    </span>
+    <span class="error bad-file">
+      Unfortunately we don't support that file type yet. Please use PNG, GIF, or JPG.
+    </span>
+    <span class="error too-big">
+      Yowza, that's a big file. Please submit an image file smaller than 5MB.
+    </span>
+    <span class="error bad-browser">
+      This browser doesn't support image attachments.
+    </span>
+    <span class="error failed-request">
+      Something went really wrong and we can't process that image.
+    </span>
+  </p>
+
+  </div>
+  <div id="preview_bucket_1" class="preview-content js-preview-bucket">
+    
+      <div id="openstruct-162124160" class="js-comment comment current-user js-task-list-container" data-body-version="">
+        <div class="comment-header -comment-header">
+            <img class="comment-header-gravatar" height="22" src="./footed_template_files/fab6c089510bbc1d988d42b357aed0d6" width="22">
+          <a href="https://github.com/pnichols104" class="comment-header-author">pnichols104</a>
+          <span class="comment-header-action-text">
+            <a href="https://github.com/bradleyayers/django-tables2/issues/28#openstruct-162124160">
+            commented
+            </a>
+          </span>
+
+          <span class="comment-header-right">
+          </span>
+        </div> <!-- /.comment-header -->
+
+        <div class="comment-content">
+
+          <div class="edit-comment-hide">
+            <div class="js-comment-body comment-body markdown-body ">
+                <p>Nothing to preview</p>
+            </div>
+          </div>
+        </div> <!-- /.comment-content -->
+      </div> <!-- /.comment -->
+
+  </div>
+
+
+  <div class="suggester-container">
+    <div class="suggester js-navigation-container" id="1_new_preview_suggester" data-url="/bradleyayers/django-tables2/suggestions/issue/1591096">
+    </div>
+  </div>
+</div>
+
+    </div>
+  </div>
+  <div class="form-actions">
+    
+<div id="js-new-comment-form-actions" class="js-socket-channel js-updatable-content" data-channel="bradleyayers/django-tables2:issue:1591096:state" data-url="/bradleyayers/django-tables2/issues/28/show_partial?partial=form_actions">
+
+
+  
+
+
+  <button type="submit" class="button primary" tabindex="2" data-disable-with="">
+    Comment
+  </button>
+</div>
+
+  </div>
+  </form> <!-- /.discussion-bubble-content -->
+</div><!-- /.discussion-bubble -->
+
+
+          <div class="thread-subscription-status clearfix js-thread-subscription-status js-socket-channel js-updatable-content" data-channel="bradleyayers/django-tables2:thread-subscription:1591096:pnichols104" data-url="/notifications/thread_subscription?repository_id=1145581&amp;thread_class=Issue&amp;thread_id=1591096">
+
+    <span class="mega-octicon octicon-radio-tower"></span>
+
+    <form accept-charset="UTF-8" action="https://github.com/notifications/thread" class="thread-subscribe-form" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="KmSKOrP8zJvtXvkYY5brn8+vX1E6xvWpQzDwkHm5z1A="></div>      <input id="repository_id" name="repository_id" type="hidden" value="1145581">
+      <input id="thread_id" name="thread_id" type="hidden" value="1591096">
+      <input id="thread_class" name="thread_class" type="hidden" value="Issue">
+      <input id="id" name="id" type="hidden" value="subscribe">
+
+      <button class="minibutton" type="submit" data-disable-with="">
+        <span class="octicon octicon-eye-watch"></span>
+        Watch
+      </button>
+</form>
+    <p class="reason">You only receive notifications for this thread when you participate or are @mentioned.</p>
+  </div>
+
+
+      </div><!-- /.discussion-timeline -->
+
+    </div><!-- /#discussion_bucket -->
+    <div class="clear"></div>
+  </div>
+
+</div>
+
+
+        </div>
+
+      </div><!-- /.repo-container -->
+      <div class="modal-backdrop"></div>
+    </div><!-- /.container -->
+  </div><!-- /.site -->
+
+
+    </div><!-- /.wrapper -->
+
+      <div class="container">
+  <div class="site-footer">
+    <ul class="site-footer-links right">
+      <li><a href="https://status.github.com/">Status</a></li>
+      <li><a href="http://developer.github.com/">API</a></li>
+      <li><a href="http://training.github.com/">Training</a></li>
+      <li><a href="http://shop.github.com/">Shop</a></li>
+      <li><a href="https://github.com/blog">Blog</a></li>
+      <li><a href="https://github.com/about">About</a></li>
+
+    </ul>
+
+    <a href="https://github.com/">
+      <span class="mega-octicon octicon-mark-github"></span>
+    </a>
+
+    <ul class="site-footer-links">
+      <li>© 2013 <span title="0.15292s from github-fe130-cp1-prd.iad.github.net">GitHub</span>, Inc.</li>
+        <li><a href="https://github.com/site/terms">Terms</a></li>
+        <li><a href="https://github.com/site/privacy">Privacy</a></li>
+        <li><a href="https://github.com/security">Security</a></li>
+        <li><a href="https://github.com/contact">Contact</a></li>
+    </ul>
+  </div><!-- /.site-footer -->
+</div><!-- /.container -->
+
+
+    <div class="fullscreen-overlay js-fullscreen-overlay" id="fullscreen_overlay">
+  <div class="fullscreen-container js-fullscreen-container">
+    <div class="textarea-wrap">
+      <textarea name="fullscreen-contents" id="fullscreen-contents" class="js-fullscreen-contents" placeholder="" data-suggester="fullscreen_suggester"></textarea>
+          <div class="suggester-container">
+              <div class="suggester fullscreen-suggester js-navigation-container" id="fullscreen_suggester" data-url="/bradleyayers/django-tables2/suggestions/commit">
+              </div>
+          </div>
+    </div>
+  </div>
+  <div class="fullscreen-sidebar">
+    <a href="https://github.com/bradleyayers/django-tables2/issues/28#" class="exit-fullscreen js-exit-fullscreen tooltipped leftwards" original-title="Exit Zen Mode">
+      <span class="mega-octicon octicon-screen-normal"></span>
+    </a>
+    <a href="https://github.com/bradleyayers/django-tables2/issues/28#" class="theme-switcher js-theme-switcher tooltipped leftwards" original-title="Switch themes">
+      <span class="octicon octicon-color-mode"></span>
+    </a>
+  </div>
+</div>
+
+
+
+    <div id="ajax-error-message" class="flash flash-error">
+      <span class="octicon octicon-alert"></span>
+      <a href="https://github.com/bradleyayers/django-tables2/issues/28#" class="octicon octicon-remove-close close ajax-error-dismiss"></a>
+      Something went wrong with that request. Please try again.
+    </div>
+
+  
+
+
+<div id="global-zeroclipboard-html-bridge" class="global-zeroclipboard-container" data-clipboard-ready="true" style="position: absolute; left: -9999px; top: -9999px; width: 15px; height: 15px; z-index: 9999;" original-title="">      <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" id="global-zeroclipboard-flash-bridge" width="100%" height="100%">         <param name="movie" value="https://github.global.ssl.fastly.net/flash/ZeroClipboard.v1.2.1.swf?nocache=1384538890663">         <param name="allowScriptAccess" value="always">         <param name="scale" value="exactfit">         <param name="loop" value="false">         <param name="menu" value="false">         <param name="quality" value="best">         <param name="bgcolor" value="#ffffff">         <param name="wmode" value="transparent">         <param name="flashvars" value="trustedOrigins=github.com">         <embed src="https://github.global.ssl.fastly.net/flash/ZeroClipboard.v1.2.1.swf?nocache=1384538890663" loop="false" menu="false" quality="best" bgcolor="#ffffff" width="100%" height="100%" name="global-zeroclipboard-flash-bridge" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" wmode="transparent" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="trustedOrigins=github.com" scale="exactfit">                </object></div>    <div class="facebox" id="facebox" style="display:none;">       <div class="facebox-popup">         <div class="facebox-content">         </div>         <button type="button" class="facebox-close">           <span class="octicon octicon-remove-close"></span>         </button>       </div>     </div></body></html>
