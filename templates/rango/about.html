@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html>
 
-	<head>
-		<title>Rango</title>
-	</head>
+{% extends 'rango/base.html' %}
 
-	<body>
+
+
+	{% block body_block %}
 		<h1>Rango says...</h1>
 		hello world <strong>{{ boldmessage }}</strong><br />
 		<a href="/rango/about/">About</a><br>
-	</body>
+	<% endblock %>
 </html>

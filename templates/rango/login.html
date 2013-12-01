@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html>
-    <head>
-
-        <title>Rango</title>
-    </head>
-
-    <body>
+{% block body_block %}
         <h1>Login to Rango</h1>
         {% if errors %}
         <ul>
@@ -24,5 +17,4 @@
             <input type="submit" value="submit" />
         </form>
 
-    </body>
-</html>
+{% endblock %}
