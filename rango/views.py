@@ -6,20 +6,36 @@ from forms import CategoryForm, PageForm, UserProfileForm, UserForm
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
-
+from datetime import datetime
 
 def decode_url(url):
 	return url.replace('_', ' ')
 
 def index(request):
+	request.session.set_test_cookie()
 	context = RequestContext(request)
 	category_list = Category.objects.order_by('-likes')[:5]
 	page_list = Page.objects.order_by('-views')[:5]
 	context_dict = {'categories':category_list, 'pages':page_list}
-	for category in category_list:
-		category.url = category.name.replace('_', ' ')
-	return render_to_response('rango/index.html', context_dict, RequestContext(request))
 
+	response = render_to_response('rango/index.html', context_dict, context)
+
+	visits = int(request.COOKIES.get('visits', '0'))
+
+	if request.COOKIES.has_key('last_visit'):
+		last_visit = request.COOKIES['last_visit']
+		last_visit_time = datetime.strptime(last_visit[:-7], "%Y-%m-%d %H:%M:%S")
+
+		if (datetime.now() - last_visit_time).days > 0:
+			response.set_cookie('visits', visits+1)
+			response.set_cookie('last_visit', datetime.now())
+
+	else:
+		response.set_cookie('last_visit', datetime.now())
+
+	# for category in category_list:
+	# 	category.url = category.name.replace('_', ' ')
+	return response
 def about(request):
 	return HttpResponse("About Page <a href='/rango/'>Main page</a>")\
 
@@ -91,6 +107,11 @@ def add_page(request, category_name_url):
 		context)
 
 def register(request):
+	if request.session.test_cookie_worked():
+		print ">>> test_cookie_worked"
+		request.session.delete_test_cookie()
+	else:
+		print "no test cookie"
 	context = RequestContext(request)
 
 	registered = False
@@ -158,4 +179,5 @@ def user_logout(request):
 
 @login_required
 def restricted(request):
-	return HttpResponse("you are logged in")
+	context = RequestContext(request)
+	return render_to_response('rango/restricted.html', {}, context)
