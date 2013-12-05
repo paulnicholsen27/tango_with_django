@@ -12,32 +12,30 @@ def decode_url(url):
 	return url.replace('_', ' ')
 
 def index(request):
-	request.session.set_test_cookie()
 	context = RequestContext(request)
 	category_list = Category.objects.order_by('-likes')[:5]
 	page_list = Page.objects.order_by('-views')[:5]
 	context_dict = {'categories':category_list, 'pages':page_list}
 
-	response = render_to_response('rango/index.html', context_dict, context)
+	if request.session.get('last_visit'):
+		last_visit_time = request.session.get('last_visit')
+		visits = request.session.get('visits', 0)
 
-	visits = int(request.COOKIES.get('visits', '0'))
-
-	if request.COOKIES.has_key('last_visit'):
-		last_visit = request.COOKIES['last_visit']
-		last_visit_time = datetime.strptime(last_visit[:-7], "%Y-%m-%d %H:%M:%S")
-
-		if (datetime.now() - last_visit_time).days > 0:
-			response.set_cookie('visits', visits+1)
-			response.set_cookie('last_visit', datetime.now())
+		if (datetime.now() - datetime.strptime(last_visit_time[:-7], '%Y-%m-%d %H:%M:%S')).days > 0:
+			request.session['visits'] = visits + 1
+			request.session['last_visit'] = str(datetime.now())
 
 	else:
-		response.set_cookie('last_visit', datetime.now())
+		request.session['last_visit'] = str(datetime.now())
+		request.session['visits'] = 1
 
-	# for category in category_list:
-	# 	category.url = category.name.replace('_', ' ')
-	return response
+	return render_to_response('rango/index.html', context_dict, context)
+
 def about(request):
-	return HttpResponse("About Page <a href='/rango/'>Main page</a>")\
+	context = RequestContext(request)
+	visits = request.session.get('visits', 0)
+
+	return render_to_response('rango/about.html', {'visits': visits}, context)
 
 
 def category(request, category_name_url):
