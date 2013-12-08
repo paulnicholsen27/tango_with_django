@@ -5,6 +5,7 @@ register = template.Library()
 @register.filter
 @stringfilter
 def replacespaces(value):
+	print value.replace(' ', '_')
 	return value.replace(' ', '_')
 
 
