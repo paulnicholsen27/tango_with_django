@@ -11,7 +11,7 @@ def run_query(q):
 	query = "'{0}'".format(q)
 	query = urllib.quote(query)
 
-	search_url = "{0}{1}?$format=json$$top={2}&$skip={3}&Query={4}".format(
+	search_url = "{0}{1}?$format=json&$top={2}&$skip={3}&Query={4}".format(
 		root_url,
 		source,
 		results_per_page,
@@ -27,7 +27,7 @@ def run_query(q):
 	results = []
 
 	try:
-		handler = urllib2.HttpBasicAuthHandler(password_mgr)
+		handler = urllib2.HTTPBasicAuthHandler(password_mgr)
 		opener = urllib2.build_opener(handler)
 		urllib2.install_opener(opener)
 
@@ -44,7 +44,6 @@ def run_query(q):
 
 	except urllib2.URLError, e:
 		print "Error when querying the Bing API: ", e
-
+	print results
 	return results
 
-	
